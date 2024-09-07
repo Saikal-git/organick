@@ -7,6 +7,7 @@ import {
   productDet,
 } from "../../../redux/reducers/addProductSlice";
 import { useNavigate } from "react-router-dom";
+import CountUp from "react-countup";
 
 const BasketCard = ({ el }) => {
   const dispatch = useDispatch();
@@ -59,7 +60,6 @@ const BasketCard = ({ el }) => {
             <h1 className="bg-gray-50 text-center w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
               {el.quantity}
             </h1>
-            
           </div>
           <button
             onClick={() => dispatch(inCrement(el._id))}
@@ -86,7 +86,13 @@ const BasketCard = ({ el }) => {
         </div>
       </td>
       <td className="px-6 py-4 text-[20px]  font-semibold text-gray-900 dark:text-white">
-        {el.price * el.quantity}$
+        <CountUp
+          start={0}
+          end={el.price * el.quantity}
+          duration={0.7}
+          separator=" "
+        ></CountUp>
+        c
       </td>
       <td className="px-6 py-4">
         <a

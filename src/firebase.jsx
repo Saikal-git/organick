@@ -1,12 +1,12 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 const firebaseConfig = {
-  apiKey: "AIzaSyC8p1Ld4yXH5H-UWBzwo6ezTtlrnlRCcoA",
-  authDomain: "organickauth.firebaseapp.com",
-  projectId: "organickauth",
-  storageBucket: "organickauth.appspot.com",
-  messagingSenderId: "710554951227",
-  appId: "1:710554951227:web:9af26b23e2ac96d7b3061e",
+  apiKey: "AIzaSyAciEpigbW1Q89lWq-Fvo-Mg6UGWLphbwQ",
+  authDomain: "organickauth-d2126.firebaseapp.com",
+  projectId: "organickauth-d2126",
+  storageBucket: "organickauth-d2126.appspot.com",
+  messagingSenderId: "586094321995",
+  appId: "1:586094321995:web:0cf8391864ed1d05cb48ce"
 };
 
 const app = initializeApp(firebaseConfig);

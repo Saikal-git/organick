@@ -59,14 +59,17 @@
 
 // export default ProductDet;
 
-import React from "react";
+import React, { useEffect } from "react";
 import bgDet from "../../assets/Banner2.png";
 import { useDispatch, useSelector } from "react-redux";
 import { FaArrowCircleRight } from "react-icons/fa";
 import { addToBasket } from "../../redux/reducers/addProductSlice";
+import { IoChevronBackCircleOutline } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 
 const ProductDet = () => {
   const dispatch = useDispatch();
+  const nav = useNavigate();
   const { productDeteils } = useSelector((s) => s.add);
   console.log(productDeteils, "prodd");
   const arrNumbers = [1, 2, 3, 4, 5];
@@ -74,21 +77,23 @@ const ProductDet = () => {
   if (!productDeteils) {
     return <div>Loading...</div>;
   }
+  useEffect(() => {
+    window.scrollTo(0, 10);
+  }, []);
 
   return (
     <>
-      <div
-        style={{
-          height: "70vh",
-          backgroundImage: `url(${bgDet})`,
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "top",
-        }}
-      ></div>
       <div className="container">
-        <div className="flex items-center gap-[80px] justify-center my-[50px]">
-          <div className="w-[450px] h-[450px] rounded-[20px] shadow-2xl">
-            <img src={productDeteils.url} alt="" width={400} className="" />
+        <div className="flex items-center relative gap-[80px]  justify-center my-[70px]">
+          <a
+            href=""
+            className="text-[40px] absolute top-[-60px] left-2"
+            onClick={() => nav(`/shop`)}
+          >
+            <IoChevronBackCircleOutline />
+          </a>
+          <div className="w-[450px] h-[450px] flex items-center justify-center rounded-[20px] shadow-2xl ">
+            <img src={productDeteils.url} alt="" width={300} className="" />
           </div>
           <div className="flex items-start flex-col gap-[30px]">
             <h1 className="text-[35px] font-bold">{productDeteils.name}</h1>

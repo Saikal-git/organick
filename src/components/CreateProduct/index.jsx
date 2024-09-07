@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const CreateProduct = () => {
   const [productUrl, setProductUrl] = useState("");
@@ -28,6 +28,10 @@ const CreateProduct = () => {
     setProductPrice("");
     setProductDes("");
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 10);
+  }, []);
 
   return (
     <div>

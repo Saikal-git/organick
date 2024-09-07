@@ -11,7 +11,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <Provider store={store}>
       <AuthContext>
-        <App />
+        <App/>
       </AuthContext>
     </Provider>
   </BrowserRouter>

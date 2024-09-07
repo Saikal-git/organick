@@ -4,6 +4,8 @@ const initialState = {
   product: [],
   productDeteils: JSON.parse(localStorage.getItem("details")) || {},
   basket: JSON.parse(localStorage.getItem("basket")) || [],
+  user: null,
+  search: [],
 };
 
 const addProductSlice = createSlice({
@@ -52,6 +54,44 @@ const addProductSlice = createSlice({
       localStorage.setItem("basket", JSON.stringify(filterDel));
       state.basket = filterDel;
     },
+    getUser(state, action) {
+      state.user = action.payload;
+    },
+    searchProduct(state, action) {
+      const serachProduct = state.product.filter((el) =>
+        el.name
+          .toUpperCase()
+          .trim()
+          .includes(action.payload.toUpperCase().trim())
+      );
+      state.search = serachProduct;
+    },
+    removeAll(state, action) {
+      localStorage.removeItem("basket");
+      state.basket = [];
+    },
+    sortProduct(state, action) {
+      if (action.payload === "cheap") {
+        let changeProduct = state.product.sort((a, b) => a.price - b.price);
+        state.product = changeProduct;
+      } else if (action.payload === "expensive") {
+        let changeProduct = state.product.sort((a, b) => b.price - a.price);
+        state.product = changeProduct;
+      } else if (action.payload === "best") {
+        let changeProduct = state.product.sort((a, b) => b.rating - a.rating);
+        state.product = changeProduct;
+      } else if (action.payload === "A-Z") {
+        let changeProduct = state.product.sort((a, b) =>
+          a.name.localeCompare(b.name)
+        );
+        state.product = changeProduct;
+      } else if (action.payload === "Z-A") {
+        let changeProduct = state.product.sort((a, b) =>
+          b.name.localeCompare(a.name)
+        );
+        state.product = changeProduct;
+      }
+    },
   },
 });
 export const {
@@ -59,8 +99,12 @@ export const {
   deleteProduct,
   productDet,
   addToBasket,
+  getUser,
   inCrement,
   desCremenet,
   deleteBasket,
+  searchProduct,
+  sortProduct,
+  removeAll,
 } = addProductSlice.actions;
 export default addProductSlice.reducer;

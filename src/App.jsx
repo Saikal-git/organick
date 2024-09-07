@@ -7,6 +7,8 @@ import Shop from "./components/Shop";
 import ProductDet from "./components/ProductDet";
 import Footer from "./components/Footer";
 import Basket from "./components/Basket";
+import Error from "./components/Error";
+import SearchProduct from "./components/SearchProduct";
 
 const App = () => {
   const routes = [
@@ -35,6 +37,16 @@ const App = () => {
       link: "/basket",
       element: <Basket />,
     },
+    {
+      id: 6,
+      link: "*",
+      element: <Error />,
+    },
+    {
+      id: 7,
+      link: "/search/:value",
+      element: <SearchProduct />,
+    },
   ];
   return (
     <>
@@ -44,7 +56,7 @@ const App = () => {
           <Route path={el.link} element={el.element} key={el.id} />
         ))}
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

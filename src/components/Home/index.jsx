@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import bgHome from "../../assets/Banner11.png";
 import one from "../../assets/1.png";
 import two from "../../assets/2.png";
@@ -16,41 +16,36 @@ import emptyProd from "../../assets/empty_cart_prod1.png";
 
 const Home = () => {
   const navigate = useNavigate();
-  const { product } = useSelector((s) => s.add);
-  let filterCategory = product.filter((el) => el.category === "Vegetable");
+  const { product, user } = useSelector((s) => s.add);
+  useEffect(() => {
+    window.scrollTo(0, 10);
+  }, []);
   return (
     <>
-      <div className="">
-        <section
-          style={{
-            height: "100vh",
-            backgroundImage: `url(${bgHome}) `,
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            backgroundPosition: "top",
-          }}
-        >
-          <div className="relative">
-            <button
-              onClick={() => navigate(`/createProduct`)}
-              className="text-[#274C5B] absolute top-[420px] left-[180px] text-[20px] bg-[#EFD372] font-bold flex items-center gap-3 py-[20px] px-[30px] rounded-xl"
-            >
-              Explore Now <FaArrowAltCircleRight />
-            </button>
-          </div>
-        </section>
-        <div className="container">
+      {/* <div className=""> */}
+      <div
+        style={{
+          minHeight: "100vh",
+          backgroundImage: `url(${bgHome}) `,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "contain",
+          backgroundPosition: "top",
+          position: "relative",
+        }}
+      >
+        <div className="">
+          <button
+            onClick={() => (user ? navigate(`/createProduct`) : alert(404))}
+            className="text-[#274C5B] absolute top-[410px] max-[1200px]:top-[357px] max-[992px]:top-[295px] max-[1024px]:top-[305px] max-[867px]:top-[258px] max-[768px]:top-[228px] max-[1200px]:left-[160px] max-[867px]:left-[115px] max-[992px]:left-[130px] max-[1024px]:left-[135px] max-[768px]:left-[103px] left-[180px] text-[20px] max-[867px]:text-[15px] bg-[#EFD372] font-bold flex items-center gap-3 py-[20px] max-[768px]:py-[17px] px-[30px] max-[768px]:px-[27px] rounded-xl"
+          >
+            Explore Now <FaArrowAltCircleRight />
+          </button>
+        </div>
+      </div>
+      {/* <div className="container">
           <div className="flex items-center justify-center gap-[30px] my-[150px]">
             <img src={one} alt="" width={500} />
             <img src={two} alt="" width={500} />
-          </div>
-        </div>
-        <div className="bg-gray-100 h-[700px] my-[30px] pt-[50px]">
-          <div className="container">
-            <div className="flex items-center justify-center">
-              <img src={orange} alt="" width={600} />
-              <img src={context} alt="" width={500} className="h-[500px]" />
-            </div>
           </div>
         </div>
         <h1 className="flex items-center justify-center text-5xl font-bold text-[#274C5B]">
@@ -101,7 +96,7 @@ const Home = () => {
             </div>
           </div>
         </div> */}
-        <div
+      {/* <div
           className=""
           style={{
             height: "100vh",
@@ -123,8 +118,9 @@ const Home = () => {
         ></div>
         <div className="flex items-center justify-center my-[50px]">
           <img src={Blog} alt="" width={1200} />
-        </div>
-      </div>
+        </div> */}{" "}
+      {/* */}
+      {/* </div> */}
     </>
   );
 };

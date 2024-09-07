@@ -40,6 +40,11 @@ a {
   z-index: 50;
   /* backdrop-filter: blur(5px); */
 }
+.header {
+  -webkit-box-shadow: -2px 22px 50px -3px rgba(34, 60, 80, 0.45);
+  -moz-box-shadow: -2px 22px 50px -3px rgba(34, 60, 80, 0.45);
+  box-shadow: -2px 22px 50px -3px rgba(34, 60, 80, 0.45);
+}
 
 @tailwind base;
 @tailwind components;
